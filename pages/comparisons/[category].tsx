@@ -14,8 +14,8 @@ import ItemCard from "../../components/comparison/ItemCard";
 export const getServerSideProps = async (context: any) => {
   const category = context.params.category
   const jsonData = await getItemsPerCategory(category)
-  console.log('running getServerSideProps', category, jsonData)
-  if(!jsonData){
+  //console.log('running getServerSideProps', category, jsonData)
+  if (!jsonData) {
     return {
       notFound: true,
     }
@@ -31,8 +31,8 @@ const CompareCategory: NextPage = (cat: any) => {
     <Container md>
       <Text h1>{cat.category} was selected for comparison</Text>
       <Grid.Container gap={2} justify="center">
-        {cat.items.map((i:any) => (
-          <ItemCard {...i} key={i.model} />
+        {cat.items.map((i: any) => (
+          <ItemCard {...i} key={i.id} />
         ))}
       </Grid.Container>
     </Container>
