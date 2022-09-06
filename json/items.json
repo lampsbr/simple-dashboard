@@ -32,6 +32,19 @@
             "switchColor": "red",
             "swappableSwitch": false
           }
+        },
+        {
+          "id": "sbrubles2j",
+          "title": "Seenda ISJ-ZXKB01",
+          "mainImg": {
+            "url": "https://cdn.shopify.com/s/files/1/0552/5435/2079/products/ISJ-ZXKB01.jpg?v=1661762356&width=600"
+          },
+          "details": {
+            "manufacturer": "Seenda",
+            "model": "ISJ-ZXKB01",
+            "size": "Full",
+            "mechanism": "membrane"
+          }
         }
       ]
     },
