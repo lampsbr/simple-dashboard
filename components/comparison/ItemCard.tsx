@@ -10,8 +10,8 @@ export default function ItemCard(props: any) {
             </Text>
           </Col>
         </Card.Header>
-        {props.imgUrl && <Card.Image
-          src={props.imgUrl}
+        {props.mainImg && <Card.Image
+          src={props.mainImg.url}
           objectFit="cover"
           width="100%"
           height={180}
@@ -19,14 +19,14 @@ export default function ItemCard(props: any) {
         />}
         <Card.Body css={{ marginTop: 10 }}>
           {/*data for keyboards*/}
-          {props.manufacturer && <Text color="white">Maker: {props.manufacturer}</Text>}
-          {props.model && <Text color="white">Model: {props.model}</Text>}
-          {props.size && <Text color="white">Size: {props.size}</Text>}
+          {props.details.manufacturer && <Text color="white">Maker: {props.details.manufacturer}</Text>}
+          {props.details.model && <Text color="white">Model: {props.details.model}</Text>}
+          {props.details.size && <Text color="white">Size: {props.details.size}</Text>}
 
           {/*data for GDPs*/}
-          {props.country && <Text color="white">Country: {props.country}</Text>}
-          {props.year && <Text color="white">year: {props.year}</Text>}
-          {props.total && <Text color="white">total: {props.total}</Text>}
+          {props.details.country && <Text color="white">Country: {props.details.country}</Text>}
+          {props.details.year && <Text color="white">year: {props.details.year}</Text>}
+          {props.details.total && <Text color="white">total: {props.details.total}</Text>}
 
         </Card.Body>
       </Card>
