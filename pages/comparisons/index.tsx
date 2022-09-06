@@ -1,11 +1,24 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
+import { getAvailableCategories } from '../api/comparisons/[category]'
 
-const Comparisons: NextPage = () => {
-  const comparisonsAvailable = ['keyboards', 'GDPs']
+export const getServerSideProps = async (ctx: any) => {
+  const categories = await getAvailableCategories()
+
+  if (!categories) {
+    return {
+      notFound: true,
+    }
+  } else {
+    return {
+      props: { categories }
+    }
+  }
+}
+
+const Comparisons: NextPage = (catList: any) => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -19,7 +32,7 @@ const Comparisons: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          {comparisonsAvailable.map(ca => <Link key={ca} href={`/comparisons/${ca}`} passHref>
+          {catList.categories.map((ca: string) => <Link key={ca} href={`/comparisons/${ca}`} passHref>
             <a className={styles.card}>
               <h2>{ca}</h2>
               <p>Lorem ipsum dolor sit amet.</p>

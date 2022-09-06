@@ -5,20 +5,27 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  */
 
 const itemsPerCategory = [
-  {category: 'keyboards', items: [
-    {manufacturer: 'Redragon', model: 'Horus 618', size: 'Full'},
-    {manufacturer: 'Redragon', model: 'Horus 612', size: 'TKL'},
-  ]},
-  {category: 'GDPs', items: [
-    {country: 'Brazil', year: '2020', total: '5 apples'},
-    {country: 'Brazil', year: '2019', total: '6 apples'},
-    {country: 'China', year: '2019', total: '16 apples'},
-  ]},
+  {
+    category: 'keyboards', items: [
+      { manufacturer: 'Redragon', model: 'Horus 618', size: 'Full' },
+      { manufacturer: 'Redragon', model: 'Horus 612', size: 'TKL' },
+    ]
+  },
+  {
+    category: 'GDPs', items: [
+      { country: 'Brazil', year: '2020', total: '5 apples' },
+      { country: 'Brazil', year: '2019', total: '6 apples' },
+      { country: 'China', year: '2019', total: '16 apples' },
+    ]
+  },
 ]
 
 export async function getItemsPerCategory(category: string) {
   const selectedCategory = await itemsPerCategory.find(cat => cat.category === category)
   return selectedCategory
+}
+export async function getAvailableCategories() {
+  return (await itemsPerCategory.map(cat => cat.category))
 }
 
 type Data = {
@@ -32,8 +39,8 @@ export default async function handler(
 ) {
   const { category } = req.query
   const selectedCategory = await getItemsPerCategory(String(category));
-  
-  if(selectedCategory){
+
+  if (selectedCategory) {
     res.status(200).json(selectedCategory)
   } else {
     res.status(404)
