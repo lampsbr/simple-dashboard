@@ -1,8 +1,15 @@
-import { GetServerSideProps, NextPage } from "next";
-import { useRouter } from "next/router";
+import { NextPage } from "next";
 import styles from '../../styles/Home.module.css'
 import Image from 'next/image'
 import { getItemsPerCategory } from '../api/comparisons/[category]'
+import { Card, Container, Grid, Row, Col, Text } from '@nextui-org/react';
+import ItemCard from "../../components/comparison/ItemCard";
+
+/**
+ * This is the home for categories comparison. 
+ * It should receive a category name by parameter, grab a list 
+ * in the api and render stuff.
+ */
 
 export const getServerSideProps = async (context: any) => {
   const category = context.params.category
@@ -21,34 +28,14 @@ export const getServerSideProps = async (context: any) => {
 
 const CompareCategory: NextPage = (cat: any) => {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-      <h1 className={styles.title}>
-        <p>{cat.category} was selected for comparison</p>
-      </h1>
-      <p className={styles.description}></p>
-      <div className={styles.grid}>
-        <ul>
-          {cat.items.map((i:any) => (
-          <li key={i.model}>
-            {i.manufacturer} - {i.model} - {i.size}
-          </li>))}
-        </ul>
-      </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
+    <Container md>
+      <Text h1>{cat.category} was selected for comparison</Text>
+      <Grid.Container gap={2} justify="center">
+        {cat.items.map((i:any) => (
+          <ItemCard {...i} key={i.model} />
+        ))}
+      </Grid.Container>
+    </Container>
   )
 }
 export default CompareCategory;
