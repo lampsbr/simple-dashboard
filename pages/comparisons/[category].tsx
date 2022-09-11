@@ -5,6 +5,7 @@ import { getItemsPerCategory } from '../api/comparisons/[category]'
 import { Card, Container, Grid, Row, Col, Text } from '@nextui-org/react';
 import ItemCard from "../../components/comparison/ItemCard";
 import Filter from "../../components/comparison/Filter";
+import { useEffect, useState } from "react";
 
 /**
  * This is the home for categories comparison. 
@@ -28,12 +29,29 @@ export const getServerSideProps = async (context: any) => {
 }
 
 const CompareCategory: NextPage = (cat: any) => {
+  const [visibleItems, setVisibleItems] = useState<Object[]>([])
+  const [filters, setFilters] = useState<Map<string, Array<string>>>(new Map<string, Array<string>>())
+
+  useEffect(() => {
+    const updateVisibleItems = async () => {
+      let tempList = [...cat.items]
+      for await (const filter of filters.keys()){
+        const filteredList = filters.get(filter) || []
+        if(filteredList.length > 0){
+          tempList = tempList.filter(item => filteredList.includes(item.details[filter]))
+        }
+      }
+      setVisibleItems(tempList)
+    }
+    updateVisibleItems()
+  }, [cat.items, filters])
+
   return (
     <Container md>
       <Text h1>{cat.category} was selected for comparison</Text>
       <Grid.Container gap={2} justify="center">
-        <Filter {...cat} />
-        {cat.items.map((i: any) => (
+        <Filter items={cat.items} selectedFilters={filters} setSelectedFilters={setFilters} />
+        {visibleItems.map((i: any) => (
           <ItemCard {...i} key={i.id} />
         ))}
       </Grid.Container>

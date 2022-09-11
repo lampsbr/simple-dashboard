@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Checkbox, Col, Grid, Modal, Text } from '@nextui-org/react';
 
-export default function DynamicFilter(props: any) {
+type FilterProps = {
+  items: any[],
+  selectedFilters: Map<string, Array<string>>,
+  setSelectedFilters: (nf: Map<string, Array<string>>) => void
+}
+
+export default function DynamicFilter({ items, selectedFilters, setSelectedFilters }: FilterProps) {
   const [filterList, setFilterList] = useState<Map<string, Set<string>>>(new Map<string, Set<string>>())
-  const [selections, setSelections] = useState<Map<string, Array<string>>>(new Map<string, Array<string>>)
+  //const [selections, setSelections] = useState<Map<string, Array<string>>>(new Map<string, Array<string>>)
 
   /**
    * This initialized the filterList state, feeding it with the json received as prop.
@@ -13,23 +19,23 @@ export default function DynamicFilter(props: any) {
       const newFilterList = new Map<string, Set<string>>()
       const newSelections = new Map<string, Array<string>>()
       //this grabs all filter names
-      for await (const item of props.items) {
+      for await (const item of items) {
         for await (const detail of Object.keys(item.details)) {
           newFilterList.set(detail, new Set<string>())
           newSelections.set(detail, new Array<string>())
         }
       }
       //this grabs all values for each filter
-      for await (const item of props.items) {
+      for await (const item of items) {
         for await (const detail of Object.keys(item.details)) {
           newFilterList.get(detail)?.add(item.details[detail])
         }
       }
       setFilterList(newFilterList)
-      props.setFilters(newSelections)
+      setSelectedFilters(newSelections)
     }
     generateFilterList()
-  }, [props])
+  }, [items, setSelectedFilters])
 
 
 
@@ -37,16 +43,17 @@ export default function DynamicFilter(props: any) {
    * This updates the selections object
    */
   const toggleSelection = (filter: string, value: string, newValue: boolean) => {
-    const newSelections = Object.assign(selections, new Map<string,Array<string>>())
+    const newSelections = new Map(selectedFilters)
     const newFilterSelection = newSelections.get(filter) || new Array<string>
 
-    if(newValue){
+    if (newValue) {
       newFilterSelection.push(value)
     } else {
       newFilterSelection.splice(newFilterSelection.indexOf(value), 1)
     }
     newSelections.set(filter, newFilterSelection)
-    setSelections(newSelections)
+    //console.log('newSelections in filter component', newSelections)
+    setSelectedFilters(newSelections)
   }
 
   return (<>
@@ -66,11 +73,10 @@ export default function DynamicFilter(props: any) {
                 <div key={x}>
                   <p>{x}</p>
                   {theSet && Array.from(theSet).map((val: string) => {
-                    /*isSelected={selections.get(x)?.includes(val)} */
-                    return <Checkbox key={`${x}##${val}`}  onChange={e => toggleSelection(x, val, e)}>{val}</Checkbox>
+                    return <Checkbox key={`${x}##${val}`} onChange={e => toggleSelection(x, val, e)}>{val}</Checkbox>
                   })}
                 </div>
-                )
+              )
             })
           }
         </Card.Body>
