@@ -35,9 +35,9 @@ const CompareCategory: NextPage = (cat: any) => {
   useEffect(() => {
     const updateVisibleItems = async () => {
       let tempList = [...cat.items]
-      for await (const filter of filters.keys()){
+      for await (const filter of filters.keys()) {
         const filteredList = filters.get(filter) || []
-        if(filteredList.length > 0){
+        if (filteredList.length > 0) {
           tempList = tempList.filter(item => filteredList.includes(item.details[filter]))
         }
       }
@@ -47,15 +47,21 @@ const CompareCategory: NextPage = (cat: any) => {
   }, [cat.items, filters])
 
   return (
-    <Container md>
-      <Text h1>{cat.category} was selected for comparison</Text>
-      <Grid.Container gap={2} justify="center">
+    <Grid.Container>
+      <Grid xs={12}>
+        <Text h1>{cat.category} was selected for comparison</Text>
+      </Grid>
+      <Grid xs={12} lg={3}>
         <Filter items={cat.items} selectedFilters={filters} setSelectedFilters={setFilters} />
-        {visibleItems.map((i: any) => (
-          <ItemCard {...i} key={i.id} />
-        ))}
-      </Grid.Container>
-    </Container>
+      </Grid>
+      <Grid xs={12} lg={9}>
+        <Grid.Container gap={2} justify="center">
+          {visibleItems.map((i: any) => (
+            <ItemCard {...i} key={i.id} />
+          ))}
+        </Grid.Container>
+      </Grid>
+    </Grid.Container>
   )
 }
 export default CompareCategory;

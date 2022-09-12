@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Checkbox, Col, Grid, Modal, Text } from '@nextui-org/react';
+import { Card, Checkbox, Col, Collapse, Grid, Modal, Text } from '@nextui-org/react';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 type FilterProps = {
   items: any[],
@@ -8,6 +9,7 @@ type FilterProps = {
 }
 
 export default function DynamicFilter({ items, selectedFilters, setSelectedFilters }: FilterProps) {
+  const { width, height } = useWindowDimensions();
   const [filterList, setFilterList] = useState<Map<string, Set<string>>>(new Map<string, Set<string>>())
   //const [selections, setSelections] = useState<Map<string, Array<string>>>(new Map<string, Array<string>>)
 
@@ -56,16 +58,13 @@ export default function DynamicFilter({ items, selectedFilters, setSelectedFilte
     setSelectedFilters(newSelections)
   }
 
+  const shouldFiltersBeExpanded = (): boolean => {
+    return width !== undefined && width > 1280
+  }
+
   return (<>
-    <Grid xs={4}>
-      <Card>
-        <Card.Header>
-          <Text size={12} weight="bold" transform="uppercase">
-            Filter options
-          </Text>
-        </Card.Header>
-        <Card.Divider />
-        <Card.Body css={{ marginTop: 10 }}>
+    <Grid xs={12} >
+      <Collapse title="Filter Options" shadow bordered expanded={shouldFiltersBeExpanded()} css={{w: '100%', m: '1rem'}}>
           {
             Array.from(filterList.keys()).map(x => {
               const theSet = filterList.get(x)
@@ -73,14 +72,13 @@ export default function DynamicFilter({ items, selectedFilters, setSelectedFilte
                 <div key={x}>
                   <p>{x}</p>
                   {theSet && Array.from(theSet).map((val: string) => {
-                    return <Checkbox key={`${x}##${val}`} onChange={e => toggleSelection(x, val, e)}>{val}</Checkbox>
+                    return <Checkbox key={`${x}##${val}`} onChange={e => toggleSelection(x, val, e)} css={{ml: '1.5rem'}}>{val}</Checkbox>
                   })}
                 </div>
               )
             })
           }
-        </Card.Body>
-      </Card>
+      </Collapse>
     </Grid>
   </>
   )
