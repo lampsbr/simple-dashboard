@@ -49,6 +49,149 @@
       ]
     },
     {
+      "category": "Air Conditioners",
+      "items": [
+        {
+          "id": "sbrubles2k",
+          "title": "Split Hi Wall Elgin Eco Plus II 12000 BTUs Frio HEFI12B2FB / HEFE12B2NB",
+          "mainImg": {
+            "url": "https://i.zst.com.br/thumbs/12/28/f/-809692215.jpg"
+          },
+          "links": [
+            {"url": "https://www.zoom.com.br/ar-condicionado/ar-condicionado-split-elgin-12000-btus-frio-hefi12b2fb-hefe12b2nb?_lc=11", "price": "R$ 1399", "date": "2022-09-14"}
+          ],
+          "details": {
+            "manufacturer": "Elgin",
+            "model": "HEFI12B2FB / HEFE12B2NB",
+            "type": "Split",
+            "inverter": "no",
+            "capacity (BTU)": "12000",
+            "remote control": "yes",
+            "gas": "R-410A",
+            "reported power consumption (kWh)": "22.7"
+          }
+        },
+        {
+          "id": "sbrubles2j",
+          "title": "Split Hi Wall Springer Midea Maxiflex 12000 BTUs Frio 42AFCE12X5 / 38KCY12X5",
+          "mainImg": {
+            "url": "https://i.zst.com.br/thumbs/12/15/38/-570657795.jpg"
+          },
+          "links": [
+            {"url": "https://www.zoom.com.br/ar-condicionado/ar-condicionado-split-maxiflex-12000-btus-frio-42afce12x5-38kcy12x5?_lc=11", "price": "R$ 1449.87", "date": "2022-09-14"}
+          ],
+          "details": {
+            "manufacturer": "Midea",
+            "model": "42AFCE12X5 / 38KCY12X5",
+            "type": "Split",
+            "inverter": "no",
+            "capacity (BTU)": "12000",
+            "remote control": "yes",
+            "gas": "R-410A"
+          }
+        },
+        {
+          "id": "sbrubles2l",
+          "title": "Split Hi Wall Elgin Eco Power 12000 BTUs Frio HWFI12B2IA / HWFE12B2NA",
+          "mainImg": {
+            "url": "https://i.zst.com.br/thumbs/12/2e/35/-770511730.jpg"
+          },
+          "links": [
+            {"url": "https://www.zoom.com.br/ar-condicionado/ar-condicionado-split-elgin-12000-btus-hwfi12b2ia-hwfe12b2na?_lc=11", "price": "R$ 1494.30", "date": "2022-09-14"}
+          ],
+          "details": {
+            "manufacturer": "Elgin",
+            "model": "HWFI12B2IA / HWFE12B2NA",
+            "type": "Split",
+            "inverter": "no",
+            "capacity (BTU)": "12000",
+            "remote control": "yes",
+            "gas": "R-410A",
+            "reported power consumption (kWh)": "22.4"
+          }
+        },
+        {
+          "id": "sbrubles2m",
+          "title": "Split Hi Wall Springer Midea Silvermaxi 12000 BTUs Frio 42AFCG12V5",
+          "mainImg": {
+            "url": "https://i.zst.com.br/thumbs/12/7/3d/-527915289.jpg"
+          },
+          "links": [
+            {"url": "https://www.zoom.com.br/ar-condicionado/ar-condicionado-split-springer-midea-12000-btus-frio-42afcg12v5?_lc=11", "price": "R$ 1529.00", "date": "2022-09-14"}
+          ],
+          "details": {
+            "manufacturer": "Midea",
+            "model": "42AFCG12V5",
+            "type": "Split",
+            "inverter": "no",
+            "capacity (BTU)": "12000",
+            "remote control": "yes",
+            "gas": "R-410A",
+            "reported power consumption (kWh)": "22.8"
+          }
+        },
+        {
+          "id": "sbrubles2n",
+          "title": "Split Hi Wall Springer Midea Airvolution 12000 BTUs Frio 42TFCA12S5 / 38TFCA12S5",
+          "mainImg": {
+            "url": "https://i.zst.com.br/thumbs/12/30/30/-741242206.jpg"
+          },
+          "links": [
+            {"url": "https://www.zoom.com.br/ar-condicionado/ar-condicionado-split-midea-12000-btus-frio-42tfca12s5-38tfca12s5?_lc=11", "price": "R$ 1588.00", "date": "2022-09-14"}
+          ],
+          "details": {
+            "manufacturer": "Midea",
+            "model": "42TFCA12S5 / 38TFCA12S5",
+            "type": "Split",
+            "inverter": "no",
+            "capacity (BTU)": "12000",
+            "remote control": "yes",
+            "gas": "R-410A",
+            "reported power consumption (kWh)": "22.8"
+          }
+        },
+        {
+          "id": "sbrubles2o",
+          "title": "Split Hi Wall Springer Midea Comfee 12000 BTUs Frio 42AFCG12F5",
+          "mainImg": {
+            "url": "https://i.zst.com.br/thumbs/12/18/37/-798975286.jpg"
+          },
+          "links": [
+            {"url": "https://www.zoom.com.br/ar-condicionado/ar-condicionado-split-hi-wall-springer-midea-comfee-12000-btus-frio-42afcg12f5?_lc=11", "price": "R$ 1604.88", "date": "2022-09-14"}
+          ],
+          "details": {
+            "manufacturer": "Midea",
+            "model": "42AFCG12F5",
+            "type": "Split",
+            "inverter": "no",
+            "capacity (BTU)": "12000",
+            "remote control": "yes",
+            "gas": "R-410A"
+          }
+        },
+        {
+          "id": "sbrubles2p",
+          "title": "Split Hi Wall Electrolux Ecoturbo 12000 BTUs Frio VI12F / VE12F",
+          "mainImg": {
+            "url": "https://i.zst.com.br/thumbs/12/25/32/193255104.jpg"
+          },
+          "links": [
+            {"url": "https://www.zoom.com.br/ar-condicionado/ar-condicionado-split-electrolux-12000-btus-vi12f-ve12f?_lc=11", "price": "R$ 1613.30", "date": "2022-09-14"}
+          ],
+          "details": {
+            "manufacturer": "Electrolux",
+            "model": "VI12F / VE12F",
+            "type": "Split",
+            "inverter": "no",
+            "capacity (BTU)": "12000",
+            "remote control": "yes",
+            "gas": "R-410A",
+            "reported power consumption (kWh)": "22.8"
+          }
+        }
+      ]
+    },
+    {
       "category": "GDPs",
       "items": [
         {
